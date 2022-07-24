@@ -17,7 +17,7 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-//functiom to start the timer - need to change this to start with click, not with window.onload
+//function to start the timer
 window.onload = function () {
     var tenMinutes = 60 * 10,
         display = document.querySelector('#time');

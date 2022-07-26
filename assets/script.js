@@ -25,6 +25,8 @@ window.onload = function () {
 
 // need to write a function that makes incorrect answer subtract 30 seconds from timer once I have all the variables made.
 
+// Used the following website as a resource in constructing this quiz: https://www.sitepoint.com/simple-javascript-quiz/.
+
 function startQuiz(){
     var output = [];
     questionBank.forEach(
@@ -41,7 +43,7 @@ function startQuiz(){
             }
             output.push(
                 `<div class="question"> ${currentQuestion.question} </div>
-                <div> class="answers"> ${answers.join('')} </div>`
+                <div class="answers"> ${answers.join('')} </div>`
             );
         }
     );
@@ -50,7 +52,7 @@ function startQuiz(){
 }
 
 function showResults(){
-    var answerContainers = quizContainer.querySelectorAll('.answers');
+    var answerContainers = quizElementContainer.querySelectorAll('.answers');
     let numCorrect = 0;
     questionBank.forEach( (currentQuestion, questionNumber) => {
         const answerContainer = answerContainers[questionNumber];
@@ -172,7 +174,7 @@ var questionBank = [
             d: "Number 10 Answer 4"
         },
         correctAnswer: "c"
-    },
+    }
 ];
 
 window.onload = startQuiz();

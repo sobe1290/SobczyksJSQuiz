@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobczyk's JS Quiz</title>
+    <link rel="stylesheet" href="../assets/quizstyle.css">
 </head>
 <body>
     <div>Time remaining <span id="time"> 10:00</span> minutes</div>
-    <div id="quizElement"></div>
+    <div class="quiz-container">
+        <div id="quizElement"></div>
+    </div>
+    <button id="previous">previous question</button>
+    <button id="next">next question</button>
     <button id="submit">submit quiz</button>
     <div id="results"></div>
     <script src="../assets/script.js"></script>

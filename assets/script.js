@@ -62,15 +62,16 @@ function showResults(){
         var selector = `input[name=question${questionNumber}]:checked`;
         var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-        console.log(userAnswer)
-
         if(userAnswer === currentQuestion.correctAnswer){
+            userAnswer = answerForTimer;
+            currentQuestion.correctAnswer = comparisonAnswerForTimer;
             numCorrect++;
             answerContainers[questionNumber].style.color = 'lightgreen';
         }
         else{
             answerContainers[questionNumber].style.color = 'red';
         }
+        
     });
 
     resultsContainer.innerHTML = `${numCorrect} out of ${questionBank.length}`;    
@@ -80,12 +81,6 @@ function showSlide(n) {
     slides[currentSlide].classList.remove('active-slide');
     slides[n].classList.add('active-slide');
     currentSlide = n;
-    if(currentSlide === 0){
-        previousButton.style.display = 'none';
-    }
-    else{
-        previousButton.style.display = 'inline-block';
-    }
     if(currentSlide === slides.length-1){
         nextButton.style.display = 'none';
         submitButton.style.display = 'inline-block';
@@ -96,7 +91,9 @@ function showSlide(n) {
     }
 }
 
+
 var quizElementContainer = document.getElementById('quizElement');
+var statusContainer = document.getElementById(`status`);
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
 var questionBank = [
@@ -204,7 +201,6 @@ var questionBank = [
 
 startQuiz();
 
-const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
@@ -212,14 +208,32 @@ let currentSlide = 0;
 showSlide(currentSlide);
 
 function showNextSlide() {
-    showSlide(currentSlide + 1);
+
+    var answerContainers = quizElementContainer.querySelectorAll('.answers');
+    questionBank.forEach( (currentQuestion, questionNumber) => {
+        var answerContainer = answerContainers[questionNumber];
+        var selector = `input[name=question${questionNumber}]:checked`;
+        var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+        if(userAnswer === currentQuestion.correctAnswer){
+            statusContainer.innerHTML = `Correct!`;
+        }
+        else{
+            statusContainer.innerHTML = `Incorrect! Minus 30 Seconds from Timer`;
+        }
+        
+    });
+
+
+
+    setTimeout(function() {
+    nextButton.style.display = 'hidden';
+    showSlide(currentSlide + 1);}, 3000);
+    
   }
   
-function showPreviousSlide() {
-showSlide(currentSlide - 1);
-}
+
 
 submitButton.addEventListener('click', showResults);
-previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
 

@@ -55,15 +55,15 @@ function showResults(){
     var answerContainers = quizElementContainer.querySelectorAll('.answers');
     let numCorrect = 0;
     questionBank.forEach( (currentQuestion, questionNumber) => {
-        const answerContainer = answerContainers[questionNumber];
-        const selector = `input[name=question${questionNumber}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+        var answerContainer = answerContainers[questionNumber];
+        var selector = `input[name=question${questionNumber}]:checked`;
+        var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
         if(userAnswer === currentQuestion.correctAnswer){
             numCorrect++;
             answerContainers[questionNumber].style.color = 'lightgreen';
         }
-        else {
+        else{
             answerContainers[questionNumber].style.color = 'red';
         }
     });

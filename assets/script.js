@@ -63,15 +63,8 @@ function showResults(){
         var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
         if(userAnswer === currentQuestion.correctAnswer){
-            userAnswer = answerForTimer;
-            currentQuestion.correctAnswer = comparisonAnswerForTimer;
             numCorrect++;
-            answerContainers[questionNumber].style.color = 'lightgreen';
-        }
-        else{
-            answerContainers[questionNumber].style.color = 'red';
-        }
-        
+        }        
     });
 
     resultsContainer.innerHTML = `${numCorrect} out of ${questionBank.length}`;    
@@ -90,7 +83,6 @@ function showSlide(n) {
         submitButton.style.display = 'none';
     }
 }
-
 
 var quizElementContainer = document.getElementById('quizElement');
 var statusContainer = document.getElementById(`status`);
@@ -220,19 +212,19 @@ function showNextSlide() {
         }
         else{
             statusContainer.innerHTML = `Incorrect! Minus 30 Seconds from Timer`;
+            setTimeout(function() {
+                statusContainer.innerHTML = ``}, 3000);
+                
         }
         
     });
 
-
+    document.getElementById("next").style.display="none"; 
 
     setTimeout(function() {
-    nextButton.style.display = 'hidden';
-    showSlide(currentSlide + 1);}, 3000);
-    
+        document.getElementById("next").style.display="show";;
+        showSlide(currentSlide + 1);}, 3000);    
   }
-  
-
 
 submitButton.addEventListener('click', showResults);
 nextButton.addEventListener("click", showNextSlide);

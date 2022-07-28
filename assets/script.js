@@ -1,29 +1,20 @@
-//function for the timer
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+const timerElement = document.getElementById('time');
+let timeLeft = 300;
+let score = 0;
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
-
-//function to start the timer when quiz.html is loaded
-window.onload = function () {
-    var tenMinutes = 60 * 10,
-        display = document.querySelector('#time');
-    startTimer(tenMinutes, display);
+function startTimer() {
+    timerElement.textContent = timeLeft;
+    let timerInterval = setInterval( () => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                showResults();
+            }
+        }, 1000);
 };
 
-// need to write a function that makes incorrect answer subtract 30 seconds from timer once I have all the variables made.
+startTimer();
 
 function startQuiz(){
     var output = [];
@@ -65,7 +56,8 @@ function showResults(){
         }        
     });
 
-    resultsContainer.innerHTML = `Final Score: ${numCorrect} out of ${questionBank.length}`;    
+    resultsContainer.innerHTML = `Final Score ${score}: ${numCorrect} out of ${questionBank.length} correct`;  
+    submitButton.style.display = 'none';  
 }
 
 function showSlide(n) {
@@ -212,16 +204,20 @@ function showNextSlide() {
     var userAnswer = (answerContainer.querySelector(selector) || {}).value;
     if(userAnswer == currentSlideAnswer){
         statusContainer.innerHTML = `Correct!`;
+        score += 99;
+        setTimeout(function() {
+            statusContainer.innerHTML = ``}, 2000);
     }
     else{
         statusContainer.innerHTML = `Incorrect! Minus 30 Seconds from Timer`;
+        timeLeft -= 30;
         setTimeout(function() {
-            statusContainer.innerHTML = ``}, 3000);            
+            statusContainer.innerHTML = ``}, 2000);            
     }
     document.getElementById("next").style.display="none"; 
     setTimeout(function() {
         document.getElementById("next").style.display="show";;
-        showSlide(currentSlide + 1);}, 3000);    
+        showSlide(currentSlide + 1);}, 2000);    
 }
 
 submitButton.addEventListener('click', showResults);

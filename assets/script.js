@@ -25,9 +25,6 @@ window.onload = function () {
 
 // need to write a function that makes incorrect answer subtract 30 seconds from timer once I have all the variables made.
 
-// Used the following website as a resource in constructing this quiz: 
-// Berhanu Y, Hibbard James, 2020. "How to Make a Simple JavaScript Quiz" sitepoint.com. https://www.sitepoint.com/simple-javascript-quiz/.
-
 function startQuiz(){
     var output = [];
     questionBank.forEach(
@@ -55,19 +52,20 @@ function startQuiz(){
 }
 
 function showResults(){
+    quizElementContainer.style.display = 'none';
     var answerContainers = quizElementContainer.querySelectorAll('.answers');
     let numCorrect = 0;
     questionBank.forEach( (currentQuestion, questionNumber) => {
         var answerContainer = answerContainers[questionNumber];
-        var selector = `input[name=question${questionNumber}]:checked`; //this
-        var userAnswer = (answerContainer.querySelector(selector) || {}).value; //this
+        var selector = `input[name=question${questionNumber}]:checked`;
+        var userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
         if(userAnswer === currentQuestion.correctAnswer){
             numCorrect++;
         }        
     });
 
-    resultsContainer.innerHTML = `${numCorrect} out of ${questionBank.length}`;    
+    resultsContainer.innerHTML = `Final Score: ${numCorrect} out of ${questionBank.length}`;    
 }
 
 function showSlide(n) {
@@ -191,42 +189,36 @@ var questionBank = [
     }
 ];
 
+var correctAnswerArray = ["d", "a", "b", "d", "c", "d", "a", "b", "a", "c"];
+
 startQuiz();
 
 const nextButton = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 
+
+
+
 showSlide(currentSlide);
+
 
 function showNextSlide() {
 
     var answerContainers = quizElementContainer.querySelectorAll('.answers');
-    
-    questionBank.forEach( (currentQuestion, questionNumber) => {
-        var answerContainer = answerContainers[questionNumber];
-        var selector = `input[name=question${questionNumber}]:checked`;
-        var userAnswer = (answerContainer.querySelector(selector) || {}).value;
-        //var currentAnswer = (questionBank.correctAnswer[letter]); //getting undefined "d" instead of actual d. why tho..
-        
-        console.log(userAnswer)
-        console.log(questionBank.correctAnswer[letter].value)
-
-        if(userAnswer == (questionBank.correctAnswer[letter]).value){   // Error here
-            statusContainer.innerHTML = `Correct!`;
-        }
-        else{
-            statusContainer.innerHTML = `Incorrect! Minus 30 Seconds from Timer`;
-            setTimeout(function() {
-                statusContainer.innerHTML = ``}, 3000);
-                
-        }
-        
-    });
-    
-
+    var currentSlideAnswer = correctAnswerArray[currentSlide];    
+    var answerContainer = answerContainers[currentSlide];
+    var selector = `input[name=question${currentSlide}]:checked`;
+    var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    if(userAnswer == currentSlideAnswer){
+        statusContainer.innerHTML = `Correct!`;
+    }
+    else{
+        statusContainer.innerHTML = `Incorrect! Minus 30 Seconds from Timer`;
+        setTimeout(function() {
+            statusContainer.innerHTML = ``}, 3000);            
+    }
     document.getElementById("next").style.display="none"; 
-
     setTimeout(function() {
         document.getElementById("next").style.display="show";;
         showSlide(currentSlide + 1);}, 3000);    

@@ -59,8 +59,8 @@ function showResults(){
     let numCorrect = 0;
     questionBank.forEach( (currentQuestion, questionNumber) => {
         var answerContainer = answerContainers[questionNumber];
-        var selector = `input[name=question${questionNumber}]:checked`;
-        var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+        var selector = `input[name=question${questionNumber}]:checked`; //this
+        var userAnswer = (answerContainer.querySelector(selector) || {}).value; //this
 
         if(userAnswer === currentQuestion.correctAnswer){
             numCorrect++;
@@ -202,12 +202,17 @@ showSlide(currentSlide);
 function showNextSlide() {
 
     var answerContainers = quizElementContainer.querySelectorAll('.answers');
+    
     questionBank.forEach( (currentQuestion, questionNumber) => {
         var answerContainer = answerContainers[questionNumber];
         var selector = `input[name=question${questionNumber}]:checked`;
         var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+        //var currentAnswer = (questionBank.correctAnswer[letter]); //getting undefined "d" instead of actual d. why tho..
+        
+        console.log(userAnswer)
+        console.log(questionBank.correctAnswer[letter].value)
 
-        if(userAnswer === currentQuestion.correctAnswer){
+        if(userAnswer == (questionBank.correctAnswer[letter]).value){   // Error here
             statusContainer.innerHTML = `Correct!`;
         }
         else{
@@ -218,13 +223,14 @@ function showNextSlide() {
         }
         
     });
+    
 
     document.getElementById("next").style.display="none"; 
 
     setTimeout(function() {
         document.getElementById("next").style.display="show";;
         showSlide(currentSlide + 1);}, 3000);    
-  }
+}
 
 submitButton.addEventListener('click', showResults);
 nextButton.addEventListener("click", showNextSlide);

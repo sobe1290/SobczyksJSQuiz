@@ -224,11 +224,34 @@ function showNextSlide() {
 
 
 var submitInitialsButton = document.getElementById('submitInitials');
+var userInitials = document.getElementById('initials');
 
-function sendInitials () {
-    let playerInitials = submitInitialsButton.value;
+
+submitInitialsButton.addEventListener('click', function(event) {
+    event.preventDefault();
+
     
-}
+
+    let highScores = JSON.parse(localStorage.getItem("customScore"));
+    if(highScores == null) highScores = [];
+    console.log(highScores)
+    highScores.push({initials: userInitials.value, userscore: score});
+    highScores.sort((curr, next) => {
+        if (curr.userscore < next.userscore) {
+        return 1
+    } else if (curr.userscore > next.userscore) {
+        return -1
+    } else {
+        return 0}
+});
+
+    localStorage.setItem("customScore", JSON.stringify(highScores));
+    localStorage.setItem("lastScored", JSON.stringify(score));
+    window.location.href= "../html/scorescreen.html";
+
+});
+
+
 
 
 submitButton.addEventListener('click', showResults);

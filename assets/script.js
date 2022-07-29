@@ -17,6 +17,7 @@ function startTimer() {
 startTimer();
 
 function startQuiz(){
+    initialsBox.style.display = 'none';
     var output = [];
     questionBank.forEach(
         (currentQuestion, questionNumber) => {
@@ -44,6 +45,7 @@ function startQuiz(){
 
 function showResults(){
     quizElementContainer.style.display = 'none';
+    initialsBox.style.display = 'inline-block';
     var answerContainers = quizElementContainer.querySelectorAll('.answers');
     let numCorrect = 0;
     questionBank.forEach( (currentQuestion, questionNumber) => {
@@ -206,19 +208,28 @@ function showNextSlide() {
         statusContainer.innerHTML = `Correct!`;
         score += 99;
         setTimeout(function() {
-            statusContainer.innerHTML = ``}, 2000);
+            statusContainer.innerHTML = ``}, 1000);
     }
     else{
         statusContainer.innerHTML = `Incorrect! Minus 30 Seconds from Timer`;
         timeLeft -= 30;
         setTimeout(function() {
-            statusContainer.innerHTML = ``}, 2000);            
+            statusContainer.innerHTML = ``}, 1000);            
     }
     document.getElementById("next").style.display="none"; 
     setTimeout(function() {
         document.getElementById("next").style.display="show";;
-        showSlide(currentSlide + 1);}, 2000);    
+        showSlide(currentSlide + 1);}, 1000);    
 }
+
+
+var submitInitialsButton = document.getElementById('submitInitials');
+
+function sendInitials () {
+    let playerInitials = submitInitialsButton.value;
+    
+}
+
 
 submitButton.addEventListener('click', showResults);
 nextButton.addEventListener("click", showNextSlide);

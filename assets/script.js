@@ -60,6 +60,7 @@ function showResults(){
 
     resultsContainer.innerHTML = `Final Score ${score}: ${numCorrect} out of ${questionBank.length} correct`;  
     submitButton.style.display = 'none';  
+    topScoresButton.style.display = 'none';
 }
 
 function showSlide(n) {
@@ -76,6 +77,7 @@ function showSlide(n) {
     }
 }
 
+var topScoresButton = document.getElementById('scorePage');
 var quizElementContainer = document.getElementById('quizElement');
 var statusContainer = document.getElementById(`status`);
 var resultsContainer = document.getElementById('results');

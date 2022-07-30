@@ -1,4 +1,4 @@
-/* Global Style Settings */
+/* Global Styles for page */
 html {
     background-color: rgb(195, 247, 195);
 }
@@ -10,13 +10,18 @@ body {
     justify-content: center;
 }
 
-/* Style settings for the text contents */
+/* Styles for the text sections */
 h1 {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     font-size: 30px;
+}
+
+.yourRecentScore {
+    display: flex;
+    justify-content: center;
 }
 
 h2 {
@@ -28,9 +33,28 @@ h2 {
     text-align:center;
 }
 
-/* Styling for the button */
-.indexLink {
+.highScoreListStyle {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.topScores {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for the button */
+.playAgain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.indexLink {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,10 +65,8 @@ h2 {
     text-decoration: none;
     background-color: #EEEEEE;
     color: #333333;
-    padding: 20px;
     border-top: 1px solid #CCCCCC;
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-    margin: 20px;    
+    border-left: 1px solid #CCCCCC;    
 }

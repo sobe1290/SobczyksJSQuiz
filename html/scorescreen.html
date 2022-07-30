@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="reset" href="../assets/reset.css">
+    <link rel="stylesheet" href="../assets/scores.css">
+    <title>Top Scores</title>
 </head>
 <body>
-    <div>
+    <div class="recentScore">
         <h1> Most Recent Score</h1>
-        <div id="yourScore"></div>
+        <div class="yourRecentScore" id="yourScore"></div>
     </div>
-    <div>
+    <div class="playAgain">
+        <h2> Play Again?</h2>
+        <a class=indexLink href="./quiz.html">Restart</a>
+    </div>
+    <div class="topScores">
         <h2> Top Scores </h2>
-        <div id="highScores"></div>
+        <div class= "highScoreListStyle" id="highScores"></div>
     </div>
     <script src="../assets/scorescreen.js"></script>
+    
 </body>
 </html>

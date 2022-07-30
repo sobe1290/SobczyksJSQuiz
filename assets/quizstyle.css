@@ -1,72 +1,87 @@
+/* Sets background color */
 html {
-  background-color: rgb(173, 255, 173);
+  background-color: rgb(195, 247, 195);
 }
 
+/* This section sets the styles for the header */
 .headerBar {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
 }
+
 .timeStyle {
   display: flex;
   justify-content: right;
 }
 
+.quizToScoreLink{
+  display: flex;
+  text-decoration: none;
+}
+
+/* This section sets the styles for the main quiz body */
+body {
+  text-align: center;
+}
+
 .slide{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-  .active-slide{
-    opacity: 1;
-    z-index: 2;
-  }
-  .quiz-container{
-    position: relative;
-    height: 200px;
-    margin-top: 40px;
-  }
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
 
-  .question {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-size: 30px;
-    font-weight: 500;
-  }
+.active-slide{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  z-index: 2;
+}
+.quiz-container{
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
-  .answers {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-size: 18px;
-  }
+.question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: 500;
+}
 
-  .quizButtons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    font-size: 18px;
-    font: bold 11px Arial;
-    text-decoration: none;
-    background-color: #EEEEEE;
-    color: #333333;
-    padding: 20px;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-    margin: 20px;
-  }
+.answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  font-size: 18px;
+}
 
-  .quizToScoreLink{
-    display: flex;
-  }
+/* This section sets the style for the buttons used */
+.quizButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  padding: 20px;
+}

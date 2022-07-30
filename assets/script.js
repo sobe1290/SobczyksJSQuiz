@@ -1,3 +1,4 @@
+//This section controls the timer
 const timerElement = document.getElementById('time');
 let timeLeft = 300;
 let score = 0;
@@ -16,6 +17,7 @@ function startTimer() {
 
 startTimer();
 
+//This section builds the quiz slideshow upon calling startQuiz
 function startQuiz(){
     initialsBox.style.display = 'none';
     var output = [];
@@ -43,6 +45,7 @@ function startQuiz(){
     quizElementContainer.innerHTML = output.join('');
 }
 
+//This section defines how the quiz ends.
 function showResults(){
     quizElementContainer.style.display = 'none';
     initialsBox.style.display = 'inline-block';
@@ -61,8 +64,10 @@ function showResults(){
     resultsContainer.innerHTML = `Final Score ${score}: ${numCorrect} out of ${questionBank.length} correct`;  
     submitButton.style.display = 'none';  
     topScoresButton.style.display = 'none';
+    nextButton.style.display = 'none';
 }
 
+//This section defines the behavior of moving to the next question.
 function showSlide(n) {
     slides[currentSlide].classList.remove('active-slide');
     slides[n].classList.add('active-slide');
@@ -77,109 +82,112 @@ function showSlide(n) {
     }
 }
 
+//These are variables that are used for functionality of the quiz slideshow.
 var topScoresButton = document.getElementById('scorePage');
 var quizElementContainer = document.getElementById('quizElement');
 var statusContainer = document.getElementById(`status`);
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
+
+//These are the questions used in the quiz.
 var questionBank = [
     {
-        question: "Number 1 Question?",
+        question: "Which of these is NOT a primitive data type?",
         answers: {
-            a: "Number 1 Answer 1",
-            b: "Number 1 Answer 2",
-            c: "Number 1 Answer 3",
-            d: "Number 1 Answer 4"
+            a: "String",
+            b: "Number",
+            c: "Boolean",
+            d: "Function"
         },
         correctAnswer: "d"
     },
     {
-        question: "Number 2 Question?",
+        question: "Which method would convert letters to lowercase?",
         answers: {
-            a: "Number 2 Answer 1",
-            b: "Number 2 Answer 2",
-            c: "Number 2 Answer 3",
-            d: "Number 2 Answer 4"
+            a: ".toLowerCase();",
+            b: ".fontReduce();",
+            c: ".fontSmaller();",
+            d: ".toSmallAlpha();"
         },
         correctAnswer: "a"
     },
     {
-        question: "Number 3 Question?",
+        question: "Which of the following is not a valid operator?",
         answers: {
-            a: "Number 3 Answer 1",
-            b: "Number 3 Answer 2",
-            c: "Number 3 Answer 3",
-            d: "Number 3 Answer 4"
+            a: "+",
+            b: "=^",
+            c: "*=",
+            d: "**="
         },
         correctAnswer: "b"
     },
     {
-        question: "Number 4 Question?",
+        question: "What does JSON stand for?",
         answers: {
-            a: "Number 4 Answer 1",
-            b: "Number 4 Answer 2",
-            c: "Number 4 Answer 3",
-            d: "Number 4 Answer 4"
+            a: "JavaScript Orphan Notation",
+            b: "Javascript Object Normalization",
+            c: "JavaScript Orphan Normalization",
+            d: "JavaScript Object Notation"
         },
         correctAnswer: "d"
     },
     {
-        question: "Number 5 Question?",
+        question: "Which of these variables would result in an error?",
         answers: {
-            a: "Number 5 Answer 1",
-            b: "Number 5 Answer 2",
-            c: "Number 5 Answer 3",
-            d: "Number 5 Answer 4"
+            a: "var myVar = x",
+            b: "let myVar = x",
+            c: "set myVar = x",
+            d: "const myVar =x"
         },
         correctAnswer: "c"
     },
     {
-        question: "Number 6 Question?",
+        question: "What is the keyword required when declaring a function?",
         answers: {
-            a: "Number 6 Answer 1",
-            b: "Number 6 Answer 2",
-            c: "Number 6 Answer 3",
-            d: "Number 6 Answer 4"
+            a: "Parameter",
+            b: "Return",
+            c: "Argument",
+            d: "Function"
         },
         correctAnswer: "d"
     },
     {
-        question: "Number 7 Question?",
+        question: "Which of these is not a valid conditional?",
         answers: {
-            a: "Number 7 Answer 1",
-            b: "Number 7 Answer 2",
-            c: "Number 7 Answer 3",
-            d: "Number 7 Answer 4"
+            a: "Else then",
+            b: "If",
+            c: "Else",
+            d: "Else if"
         },
         correctAnswer: "a"
     },
     {
-        question: "Number 8 Question?",
+        question: "What are the values inside arrays called?",
         answers: {
-            a: "Number 8 Answer 1",
-            b: "Number 8 Answer 2",
-            c: "Number 8 Answer 3",
-            d: "Number 8 Answer 4"
+            a: "Variables",
+            b: "Elements",
+            c: "List Items",
+            d: "Objects"
         },
         correctAnswer: "b"
     },
     {
-        question: "Number 9 Question?",
+        question: "What is it called when declarations are moved to the top?",
         answers: {
-            a: "Number 9 Answer 1",
-            b: "Number 9 Answer 2",
-            c: "Number 9 Answer 3",
-            d: "Number 9 Answer 4"
+            a: "Hoisting",
+            b: "Elevating",
+            c: "Rooting",
+            d: "Lifting"
         },
         correctAnswer: "a"
     },
     {
-        question: "Number 10 Question?",
+        question: "What is the word for a function when it is stored as a property within a JS Object?",
         answers: {
-            a: "Number 10 Answer 1",
-            b: "Number 10 Answer 2",
-            c: "Number 10 Answer 3",
-            d: "Number 10 Answer 4"
+            a: "Variable",
+            b: "Element",
+            c: "Method",
+            d: "Array"
         },
         correctAnswer: "c"
     }
@@ -193,14 +201,11 @@ const nextButton = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 
-
-
-
 showSlide(currentSlide);
 
+//This section defines the funtion of moving to the next question.
 
 function showNextSlide() {
-
     var answerContainers = quizElementContainer.querySelectorAll('.answers');
     var currentSlideAnswer = correctAnswerArray[currentSlide];    
     var answerContainer = answerContainers[currentSlide];
@@ -224,19 +229,13 @@ function showNextSlide() {
         showSlide(currentSlide + 1);}, 1000);    
 }
 
-
+//This section defines how a user will submit their score and initials to local storage
 var submitInitialsButton = document.getElementById('submitInitials');
 var userInitials = document.getElementById('initials');
-
-
 submitInitialsButton.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    
-
+    event.preventDefault();    
     let highScores = JSON.parse(localStorage.getItem("customScore"));
     if(highScores == null) highScores = [];
-    console.log(highScores)
     highScores.push({initials: userInitials.value, userscore: score});
     highScores.sort((curr, next) => {
         if (curr.userscore < next.userscore) {
@@ -252,9 +251,6 @@ submitInitialsButton.addEventListener('click', function(event) {
     window.location.href= "../html/scorescreen.html";
 
 });
-
-
-
 
 submitButton.addEventListener('click', showResults);
 nextButton.addEventListener("click", showNextSlide);

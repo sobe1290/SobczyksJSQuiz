@@ -1,5 +1,6 @@
 # SobczyksJSQuiz
 
+![frontpage](https://user-images.githubusercontent.com/26222624/181878093-f161cc88-f53e-429c-8acc-8f7c5386906b.jpg)
 
 
 

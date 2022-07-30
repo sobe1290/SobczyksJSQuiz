@@ -6,6 +6,8 @@ This quiz was constructed using Javascript, HTML, and CSS. This quiz was created
 
 The live deployment of the quiz can be viewed here:
 
+https://sobe1290.github.io/SobczyksJSQuiz/
+
 
 Below are screenshots of the quiz.
 

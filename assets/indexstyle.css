@@ -1,0 +1,40 @@
+html {
+    background-color: rgb(173, 255, 173);
+}
+
+h1 {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+font-size: 30px;
+}
+
+h2 {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 20px;
+    font-size: 18px;
+    text-align:center;
+    }
+
+.indexLink {
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 18px;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 20px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    margin: 20px;
+    
+}

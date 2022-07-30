@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobczyk's JS Quiz</title>
-    <link rel="stylesheet" href="../assets/quizstyle.css">
     <link rel="reset" href="../assets/reset.css">
+    <link rel="stylesheet" href="../assets/quizstyle.css">
+    
 </head>
 <body>
-    <div>Time remaining <span id="time">300</span></div>
+    <div class="headerBar">
+        <a class=quizToScoreLink id="scorePage" href="../html/scorescreen.html">Click here to view Top Scores</a>
+        <div class="timeStyle">Timer.....<span id="time"> 300 </span></div>
+    </div>
     <div class="quiz-container">
         <div id="quizElement"></div>
     </div>
-    <button id="next">next question</button>
-    <button id="submit">submit quiz</button>
+    <button class="quizButtons" id="next">next question</button>
+    <button class="quizButtons" id="submit">submit quiz</button>
     <div id="status"></div>
     <div id="results"></div>
     <div id="initialsBox">
@@ -24,7 +28,7 @@
             <input type="submit" id="submitInitials" value="Submit Initials">
         </form>  
     </div>
-    <a id="scorePage" href="../html/scorescreen.html">Click here to view Top Scores</a>
+    
     <script src="../assets/script.js"></script>
 </body>
 

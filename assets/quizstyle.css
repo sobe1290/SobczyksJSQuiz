@@ -1,3 +1,17 @@
+html {
+  background-color: rgb(173, 255, 173);
+}
+
+.headerBar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.timeStyle {
+  display: flex;
+  justify-content: right;
+}
+
 .slide{
     position: absolute;
     left: 0px;
@@ -15,4 +29,44 @@
     position: relative;
     height: 200px;
     margin-top: 40px;
+  }
+
+  .question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .quizButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 18px;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 20px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    margin: 20px;
+  }
+
+  .quizToScoreLink{
+    display: flex;
   }
